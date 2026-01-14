@@ -7,9 +7,7 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeRemainingColumn
 from doclify.utils.extract import extract_file_content
 from doclify.utils.llm import generate_doc
-from doclify.utils.logger import get_logger
 
-logger = get_logger(__name__)
 console = Console()
 
 def run_docs():
