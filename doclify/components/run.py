@@ -59,7 +59,6 @@ def run_docs():
                 
                 content = extract_file_content(file_path)
                 if content.startswith("Error") or content.startswith("File not found"):
-                    logger.warning(content)
                     skipped_count += 1
                     progress.advance(task)
                     continue
@@ -69,7 +68,6 @@ def run_docs():
                     summary = generate_doc(content, type="code_summary")
                     file_summaries.append(f"## File: {file_path}\n\n{summary}")
                 except Exception as e:
-                    logger.error(f"Failed to generate summary for {file_path}: {e}")
                     file_summaries.append(f"## File: {file_path}\n\nError generating summary: {e}")
 
                 processed_count += 1
@@ -92,8 +90,5 @@ def run_docs():
         readme_path.write_text(final_readme, encoding="utf-8")
 
         console.print(f"\n[bold green]Success![/bold green] Documentation generated in [bold blue]{readme_path}[/bold blue]")
-        logger.info(f"Generated documentation for {processed_count} files. Skipped {skipped_count}.")
-
     except Exception as e:
         console.print(f"[bold red]Failed to run documentation generation:[/bold red] {e}")
-        logger.error(f"Failed to run documentation generation: {e}")
