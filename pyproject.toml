@@ -26,7 +26,9 @@ Issues = "https://github.com/KalyanM45/Doclify/issues"
 doclify = "doclify.pipelines.supervisor:cli"
 
 [tool.setuptools]
-packages = ["doclify"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["doclify*"]
 
 [tool.setuptools.package-data]
 "doclify" = ["resources/*.gitignore"]
