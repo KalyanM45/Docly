@@ -1,0 +1,11 @@
+[project]
+name = "docly"
+version = "0.1.0"
+dependencies = [
+    "click",
+    "pathspec>=1.0.3",
+    "pyyaml",
+]
+
+[project.scripts]
+docly = "docly.cli:cli"
