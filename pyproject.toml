@@ -1,6 +1,17 @@
 [project]
 name = "doclify"
-version = "0.0.0.1"
+version = "0.0.0.2"
+description = "AI-powered documentation generator for Python projects"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "GNU AFFERO GENERAL PUBLIC LICENSE"}
+authors = [
+  {name = "Hema Kalyan", email = "mhemakalyan@gmail.com"}
+]
+urls = {
+    Repository = "https://github.com/KalyanM45/Doclify",
+    Issues = "https://github.com/KalyanM45/Doclify/issues"
+}
 dependencies = [
     "click",
     "google-genai",
