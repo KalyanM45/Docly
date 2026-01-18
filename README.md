@@ -1,76 +1,114 @@
-# Doclify 📚
+<div align="center">
+  <img src="artifacts/logo.png" alt="Doclify Logo" width="100" height="100">
+  <a href="https://github.com/KalyanM45/Doclify"><h1>Doclify 📚</h1></a>
+  <p><i>Intelligent, AI-powered documentation for your software projects.</i></p>
 
-**Doclify** is an intelligent command-line tool that automates the process of documenting your software projects. By leveraging the power of **Google's Gemini LLMs**, Doclify scans your codebase, understands the context of each file, and generates a comprehensive, professional `README.md` file.
+  [![GitHub Stars](https://img.shields.io/github/stars/KalyanM45/Doclify?style=flat&color=ffd700)](https://github.com/KalyanM45/Doclify/stargazers)
+  [![PyPI Downloads](https://img.shields.io/pypi/dm/doclify?style=flat&color=blue)](https://pypi.org/project/doclify/)
+  [![GitHub License](https://img.shields.io/github/license/KalyanM45/Doclify?style=flat&color=blue)](https://github.com/KalyanM45/Doclify/blob/main/LICENSE)
+  [![Issues](https://img.shields.io/github/issues/KalyanM45/Doclify?style=flat&color=red)](https://github.com/KalyanM45/Doclify/issues)
+</div>
 
-> **Note:** This project was formerly known as `docly`.
+---
 
-## ✨ Key Features
+**Doclify** is an intelligent command-line tool that automates the process of documenting your AI/ML software projects. By leveraging the power of **Advanced LLMs**, Doclify scans your codebase, understands the context of each file, and generates a comprehensive, professional `README.md` file.
 
-- **🚀 Two-Stage Generation**: verification-driven documentation that first analyzes individual files for granule details, then aggregates them into a holistic project summary.
-- **🤖 Powered by Gemini**: Uses the latest `google-genai` SDK to provide accurate code summaries and architecture explanations.
-- **⚡ Smart Scanning**: Automatically respects your `.gitignore` rules to only document what matters.
-- **🎨 Beautiful CLI**: Features a polished terminal interface with progress bars, spinners, and clean logs using the `rich` library.
-- **🛡️ Safety First**: Never overwrites your work without a backup. Doclify automatically saves your existing `README.md` to `README-prev.md` before generating a new one.
-- **⚙️ Configurable**: Fully customizable via `doclify.yaml`.
+---
 
-## 📦 Installation
+## 🚀 How to Use Doclify
 
-You can install Doclify directly from PyPI (once published) or build it locally.
+Doclify is designed to be intuitive. Follow these two simple steps to document your project:
 
-### Local Development
-```bash
-git clone https://github.com/yourusername/doclify.git
-cd doclify
-pip install -e .
-```
-
-## 🛠️ Configuration
-
-Doclify requires a Google API Key to function. You must set this environment variable before running the tool.
-
-**Windows (CMD)**:
-```cmd
-set GOOGLE_API_KEY=your_actual_api_key_here
-```
-
-**Windows (PowerShell)**:
-```powershell
-$env:GOOGLE_API_KEY="your_actual_api_key_here"
-```
-
-**Linux/macOS**:
-```bash
-export GOOGLE_API_KEY=your_actual_api_key_here
-```
-
-## 🚀 Usage
-
-Using Doclify is a simple two-step process:
-
-### 1. Initialize
-Run the init command to scan your directory and create a configuration file (`doclify.yaml`). This file lists all the source files that will be analyzed.
+### 1. Initialize Your Project
+Run the `init` command to scan your directory. Doclify will automatically detect your source files and create a `doclify.yaml` configuration file.
 
 ```bash
 doclify init
 ```
+- Supported Files: **Python, Markdown, Text Files**
 
-### 2. Generate
-Run the main command to analyze your code and generate the documentation.
+*   **What happens?** Doclify respects your `.gitignore` and creates a manifest of files to be analyzed.
+*   **Customization:** You can edit `doclify.yaml` to include or exclude specific files before moving to the next step.
+
+### 2. Generate Documentation
+Once initialized, run the `run` command to start the AI analysis and generate your README.
 
 ```bash
 doclify run
 ```
 
-Once complete, you will see a new `README.md` in your project root!
+*   **AI Analysis**: Doclify sends file contexts to the AI model for summarization.
+*   **Incremental Progress**: You'll see beautiful progress bars and spinners as it works.
+*   **Backup Security**: Doclify automatically saves your existing `README.md` to `README-prev.md` so you never lose your manual edits.
 
-## 🤝 Contributing
+**Result:** A fully documented `README.md` appears in your project root!
 
-Contributions are welcome!
-1.  Fork the repository.
-2.  Create a feature branch.
-3.  Commit your changes.
-4.  Open a Pull Request.
+---
 
-## 📄 License
+## 🛠️ Detailed Command Reference
 
-[MIT License](LICENSE)
+Doclify provides a set of powerful commands to manage your documentation lifecycle.
+
+### `doclify init`
+Initializes a new Doclify project in the current directory.
+
+*   **Description**: Scans the project structure, applies `.gitignore` filtering, and generates a `doclify.yaml` file.
+*   **Example**:
+    ```bash
+    doclify init
+    ```
+*   **When to use**: Run this first to define which files Doclify should consider for documentation.
+
+### `doclify run`
+Generates or regenerates the project-wide documentation.
+
+*   **Description**: Processes all files listed in `doclify.yaml` using AI models to create a comprehensive `README.md`.
+*   **Example**:
+    ```bash
+    doclify run
+    ```
+*   **When to use**: Run this after `init` or whenever you want to update your entire README based on the latest code changes.
+
+### `doclify update <path>`
+Updates documentation for a specific file or directory.
+
+*   **Description**: Target a specific subset of your codebase for faster, incremental updates.
+*   **Arguments**:
+    *   `<path>`: Path to the file or directory you want to re-analyze.
+*   **Example**:
+    ```bash
+    doclify update src/utils.py
+    ```
+*   **When to use**: Use this when you've modified specific files and want to refresh their summaries in the overall project context without regenerating everything.
+
+---
+
+## ✨ Key Features
+
+*   **🚀 Two-Stage Generation**: High-level project summary built from granular file-level analysis.
+*   **🤖 Powered by AI**: Uses the latest AI SDKs for state-of-the-art code understanding.
+*   **⚡ Smart Scanning**: Built-in `.gitignore` awareness keeps your documentation clean.
+*   **🎨 Polished CLI**: Interactive interface using `rich` with spinners and clear status logs.
+*   **🛡️ Safety First**: Automatic backups of existing README files.
+*   **⚙️ Configurable**: Fine-tune the process via `doclify.yaml`.
+
+---
+
+## ⚙️ Configuration
+
+### Environment Variables
+Doclify requires a **Google API Key**. Set it in your terminal environment:
+
+| Platform | Command |
+| :--- | :--- |
+| **Windows (CMD)** | `set GOOGLE_API_KEY=your_api_key_here` |
+| **Windows (PS)** | `$env:GOOGLE_API_KEY="your_api_key_here"` |
+| **Linux/macOS** | `export GOOGLE_API_KEY=your_api_key_here` |
+
+---
+
+## 🤝 Contributing & License
+
+Contributions make the open-source community an amazing place! Feel free to fork, branch, and PR.
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
