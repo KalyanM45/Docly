@@ -1,6 +1,6 @@
 <div align="center">
   <img src="artifacts/logo.png" alt="Doclify Logo" width="100" height="100">
-  <a href="https://github.com/KalyanM45/Doclify"><h1>Doclify 📚</h1></a>
+  <h1><a href="https://pypi.org/project/doclify/">Doclify</a></h1>
   <p><i>Intelligent, AI-powered documentation for your software projects.</i></p>
 
   [![GitHub Stars](https://img.shields.io/github/stars/KalyanM45/Doclify?style=flat&color=ffd700)](https://github.com/KalyanM45/Doclify/stargazers)
