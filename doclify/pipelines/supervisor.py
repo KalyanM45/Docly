@@ -1,13 +1,21 @@
 import click
 from doclify.components.init import init_project
+from doclify.components.refresh import refresh_project
+
+from doclify import __version__
 
 @click.group()
+@click.version_option(version=__version__)
 def cli():
     pass
 
 @cli.command()
 def init():
     init_project()
+
+@cli.command()
+def refresh():
+    refresh_project()
 
 @cli.command()
 def run():
